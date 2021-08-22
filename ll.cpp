@@ -6,7 +6,6 @@ class ll
 	int data;
 	ll *next;
 };
-
 void delte(ll** head)
 {
 	ll* last = *head;
@@ -134,7 +133,6 @@ int main()
 {
 	ll* head = NULL;
 	int k;
-	
 	insert(&head, 7);	
 	insert(&head, 1);
 	insertAtend(&head, 51);		
