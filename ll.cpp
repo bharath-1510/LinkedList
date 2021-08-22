@@ -107,31 +107,59 @@ void insertAtposition(ll** head ,int pos,int data)
 		new_node->next=temp;
 	}
 }
+void find(ll* n1,int n)
+{
+	while(n1!=NULL)
+	{
+		if(n1->data==n)
+		{
+			cout<<"Found"<<endl;
+			return;
+		}
+		n1=n1->next;
+	}
+	cout<<"Not Found";
+}
+int si(ll* n1)
+{
+	int i=0;
+	while(n1!=NULL)
+	{
+		i++;
+		n1=n1->next;
+	}
+	return i;
+}
 int main()
 {
 	ll* head = NULL;
 	int k;
-	insert(&head, 7);//"Values  inserted in begining  "	
+	
+	insert(&head, 7);	
 	insert(&head, 1);
-	insertAtend(&head, 51);//"Values inserted in end  "
+	insertAtend(&head, 51);		
 	insert(&head, 4);	
 	insertAtend(&head, 5);					
 	cout<<"\nPostion : ";
 	cin>>k;
-	insertAtposition(&head,k,9);//"Values inserted in postion  "
+	insertAtposition(&head,k,9);
 	cout<<"Original values : ";	
 	print(head);	
 	cout<<endl;
-	delte(&head);//"Values  deleted in begining  "
+	delte(&head);//"Values after deleting begining : "
 	print(head);		
-	deleteAtend(&head);//"Values deleted in end  "
+	deleteAtend(&head);//"Values after deleting end : "
 	print(head);
 	int n;
 	cout<<"Postion : ";
 	cin>>n;
-	deleteAtposition(&head,n);//"Values  deleted in postion  "
+	deleteAtposition(&head,n);//"Values after deleting postion : "
 	cout<<"\nAfter Deleting";
 	print(head);
+	int j;
+	cin>>j;
+	find(head,j);
+	int size=si(head);
+	cout<<"length : "<<size; 
 	return 0;
 }
-
