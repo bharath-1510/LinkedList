@@ -1,32 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-class ll {
-public:
-	int data;
-	ll* next;
-};
-
-void print(ll* n)
-{
-	while (n != NULL) 
-	{
-		cout << n->data << " ";
-		n = n->next;
-	}
-}
-
-int main()
-{
-	ll* head = NULL;
-	head = new ll();
-	head->data = 1; 
-	head->next = NULL;
-	print(head);
-	return 0;
-}
-//Linked list insertion
-#include <bits/stdc++.h>
-using namespace std;
 class ll
 {
 	public:
@@ -34,6 +7,56 @@ class ll
 	ll *next;
 };
 
+void delte(ll** head)
+{
+	ll* last = *head;
+	*head=last->next;
+}
+void deleteAtend(ll** head)
+{
+	if (*head == NULL)
+	{
+		cout<<"Error"<<endl;
+	}
+	else
+	{
+	ll* last = *head;
+	while (last->next->next != NULL)
+		last = last->next;
+	last->next = NULL;	
+	}
+}
+void deleteAtposition(ll** head ,int pos)
+{
+	if(pos==1)
+		delte(head);	
+	else
+	{
+		ll* temp=*head;
+		ll* p = NULL;
+		for(int i=1;i<pos;i++)
+			if(temp!=NULL)
+			{
+				p=temp;
+				temp=temp->next;
+			}
+		if(temp==NULL)
+		{	
+			cout<<"Error"<<endl;
+			return;
+		}		
+		p->next=temp->next;		
+	}
+}
+void print(ll *node)
+{
+	while (node != NULL)
+	{
+		cout<<" "<<node->data;
+		node = node->next;
+	}
+	cout<<endl;
+}
 void insert(ll** head, int data)
 {
 	ll* new_node = new ll();
@@ -84,26 +107,31 @@ void insertAtposition(ll** head ,int pos,int data)
 		new_node->next=temp;
 	}
 }
-void print(ll *node)
-{
-	while (node != NULL)
-	{
-		cout<<" "<<node->data;
-		node = node->next;
-	}
-	cout<<endl;
-}
 int main()
 {
 	ll* head = NULL;
-	insert(&head, 7);
+	int k;
+	
+	insert(&head, 7);	
 	insert(&head, 1);
 	insertAtend(&head, 51);		
-	insert(&head, 4);
-	insertAtend(&head, 5);			
+	insert(&head, 4);	
+	insertAtend(&head, 5);					
+	cout<<"\nPostion : ";
+	cin>>k;
+	insertAtposition(&head,k,9);
+	cout<<"Original values : ";	
 	print(head);	
-	insertAtposition(&head,5,9);
-	cout<<"\nAfter Inserting";
+	cout<<endl;
+	delte(&head);//"Values after deleting begining : "
+	print(head);		
+	deleteAtend(&head);//"Values after deleting end : "
+	print(head);
+	int n;
+	cout<<"Postion : ";
+	cin>>n;
+	deleteAtposition(&head,n);//"Values after deleting postion : "
+	cout<<"\nAfter Deleting";
 	print(head);
 	return 0;
 }
