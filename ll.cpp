@@ -111,26 +111,25 @@ int main()
 {
 	ll* head = NULL;
 	int k;
-	
-	insert(&head, 7);	
+	insert(&head, 7);//"Values  inserted in begining  "	
 	insert(&head, 1);
-	insertAtend(&head, 51);		
+	insertAtend(&head, 51);//"Values inserted in end  "
 	insert(&head, 4);	
 	insertAtend(&head, 5);					
 	cout<<"\nPostion : ";
 	cin>>k;
-	insertAtposition(&head,k,9);
+	insertAtposition(&head,k,9);//"Values inserted in postion  "
 	cout<<"Original values : ";	
 	print(head);	
 	cout<<endl;
-	delte(&head);//"Values after deleting begining : "
+	delte(&head);//"Values  deleted in begining  "
 	print(head);		
-	deleteAtend(&head);//"Values after deleting end : "
+	deleteAtend(&head);//"Values deleted in end  "
 	print(head);
 	int n;
 	cout<<"Postion : ";
 	cin>>n;
-	deleteAtposition(&head,n);//"Values after deleting postion : "
+	deleteAtposition(&head,n);//"Values  deleted in postion  "
 	cout<<"\nAfter Deleting";
 	print(head);
 	return 0;
